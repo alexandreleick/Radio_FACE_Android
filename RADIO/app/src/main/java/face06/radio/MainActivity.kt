@@ -2,6 +2,7 @@ package face06.radio
 
 import android.content.Context
 import android.content.DialogInterface
+import android.content.Intent
 import android.content.SharedPreferences
 import android.media.AudioManager
 import android.media.MediaPlayer
@@ -28,6 +29,7 @@ import java.util.*
 class KMainActivity : AppCompatActivity() {
     internal var prefs: SharedPreferences? = null
     internal var play: Button? = null
+    internal var lastSong: Button? = null
     internal var pause: Button? = null
     internal var title: TextView? = null
     internal var artist: TextView? = null
@@ -49,7 +51,7 @@ class KMainActivity : AppCompatActivity() {
         play!!.isEnabled = false
 
         pause = findViewById(R.id.pause) as Button
-
+        lastSong = findViewById(R.id.LastSong) as Button
         title = findViewById(R.id.song) as TextView
         artist = findViewById(R.id.artiste) as TextView
         cover = findViewById(R.id.pochette) as ImageView
@@ -72,6 +74,12 @@ class KMainActivity : AppCompatActivity() {
         pause!!.setOnClickListener {
             started = false
             mediaPlayer!!.pause()
+        }
+
+        lastSong!!.setOnClickListener {
+            Log.i("DEBUG", "" + song!!.size)
+            val paramDialog = LastSongListViewController(this, song!!)
+            paramDialog.show()
         }
     }
 

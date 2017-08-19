@@ -4,9 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="face06.radio.MainActivity">
+    tools:context="face06.radio.KMainActivity">
 
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/event_name"
+        android:textSize="18sp"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="#FFFFFF"
+        android:textAllCaps="true"
+        android:text="Player"
+        android:padding="10dp"
+        android:textAlignment="center"/>
     <ImageView
         android:id="@+id/pochette"
         android:layout_width="wrap_content"
@@ -54,5 +64,14 @@
         android:layout_toEndOf="@+id/pochette"
         android:layout_toRightOf="@+id/pochette"
         android:text="PAUSE" />
+
+    <Button
+        android:id="@+id/LastSong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LastSong"
+        android:layout_below="@+id/event_name"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
