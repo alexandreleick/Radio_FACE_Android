@@ -15,11 +15,9 @@ open class KTableViewCell(row: View?) {
     val artist_search: TextView
 
     init {
-        this.name_search = row?.findViewById<TextView>(R.id.nom_search) as TextView
+        this.name_search = row?.findViewById<TextView>(R.id.name_search) as TextView
         this.artist_search = row?.findViewById<TextView>(R.id.artist_search) as TextView
         this.cover = row?.findViewById<ImageView>(R.id.cover) as ImageView
-        //this.cover.getLayoutParams().width = 100
-        //this.cover.getLayoutParams().height = 100
 
     }
 }

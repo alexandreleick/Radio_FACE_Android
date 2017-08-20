@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView"
+        android:layout_alignBottom="@+id/textView"
+        android:layout_alignLeft="@+id/lastSong"
+        android:layout_alignStart="@+id/lastSong"
+        android:layout_marginLeft="38dp"
+        android:layout_marginStart="38dp"
+        android:text="Last Songs"
+        android:textAlignment="textStart"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignStart="@+id/textView"
+        android:layout_below="@+id/radio"
+        android:layout_marginTop="34dp"
+        android:text="Emissions"
+        android:textAlignment="textStart"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView5"
+        android:layout_alignBottom="@+id/textView5"
+        android:layout_alignLeft="@+id/textView4"
+        android:layout_alignStart="@+id/textView4"
+        android:text="Sociaux"
+        android:textAlignment="center"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/event_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:padding="10dp"
+        android:text="Home"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:id="@+id/sociaux"
+        android:layout_width="139dp"
+        android:layout_height="148dp"
+        app:srcCompat="@drawable/windows"
+        android:layout_marginRight="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_alignTop="@+id/emission"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageView
+        android:id="@+id/radio"
+        android:layout_width="139dp"
+        android:layout_height="148dp"
+        android:layout_marginTop="56dp"
+        app:srcCompat="@drawable/windows"
+        android:layout_below="@+id/event_name"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp" />
+
+    <ImageView
+        android:id="@+id/emission"
+        android:layout_width="139dp"
+        android:layout_height="148dp"
+        android:layout_marginTop="53dp"
+        app:srcCompat="@drawable/windows"
+        android:layout_below="@+id/radio"
+        android:layout_alignLeft="@+id/radio"
+        android:layout_alignStart="@+id/radio" />
+
+    <ImageView
+        android:id="@+id/lastSong"
+        android:layout_width="139dp"
+        android:layout_height="148dp"
+        app:srcCompat="@drawable/windows"
+        android:layout_alignTop="@+id/radio"
+        android:layout_alignLeft="@+id/sociaux"
+        android:layout_alignStart="@+id/sociaux" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/lastSong"
+        android:layout_alignLeft="@+id/radio"
+        android:layout_alignStart="@+id/radio"
+        android:layout_marginBottom="12dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginStart="36dp"
+        android:text="Radio"
+        android:textAlignment="textStart"
+        android:textStyle="bold" />
+
+</RelativeLayout>
