@@ -92,12 +92,12 @@ class PlayAudioExample : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
 
-        handler.removeCallbacks(updatePositionRunnable)
-        player!!.stop()
-        player!!.reset()
-        player!!.release()
+        //handler.removeCallbacks(updatePositionRunnable)
+        //player!!.stop()
+        //player!!.reset()
+        //player!!.release()
 
-        player = null
+       // player = null
     }
 
     private fun startPlay(file: String) {
