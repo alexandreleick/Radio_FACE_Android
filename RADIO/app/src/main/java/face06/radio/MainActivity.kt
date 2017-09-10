@@ -35,18 +35,19 @@ class KMainActivity : AppCompatActivity() {
     var lastSong: ImageView? = null
     var emission: ImageView? = null
     var sociaux: ImageView? = null
+    var play: ImageView?= null
+
     var song: ArrayList<KSongInformations>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.home_view)
-
         radio = findViewById(R.id.radio) as ImageView
         lastSong = findViewById(R.id.lastSong) as ImageView
         emission = findViewById(R.id.emission) as ImageView
         sociaux = findViewById(R.id.sociaux) as ImageView
-
+        play = findViewById(R.id.play) as ImageView
         ReaptSong()
         radio!!.setOnClickListener( {
             Log.i("DEBUG", "RADIO")
@@ -59,6 +60,7 @@ class KMainActivity : AppCompatActivity() {
             val paramDialog = LastSongListViewController(this, song!!)
             paramDialog.show()
         })
+
 
         emission!!.setOnClickListener( {
 

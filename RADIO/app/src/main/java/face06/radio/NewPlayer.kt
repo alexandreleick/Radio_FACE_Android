@@ -1,10 +1,14 @@
 package face06.radio
 
+import android.app.Activity
 import android.app.ListActivity
 import android.content.Context
 import android.database.Cursor
+import android.graphics.Typeface
 import android.media.AudioManager
 import android.media.MediaPlayer
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.os.*
 import android.provider.MediaStore
 import android.support.v7.app.AppCompatActivity
@@ -13,7 +17,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import com.makeramen.roundedimageview.RoundedImageView
 import com.squareup.picasso.Picasso
+import jp.wasabeef.picasso.transformations.CropCircleTransformation
+import jp.wasabeef.picasso.transformations.RoundedCornersTransformation
 import org.w3c.dom.Text
 import java.io.IOException
 import java.lang.Double
@@ -25,168 +32,64 @@ import java.util.*
  * StaffBooker Company.
  */
 
-class PlayAudioExample : AppCompatActivity() {
+class PlayAudioExample : Activity() {
 
     private var title: TextView? = null
-    private var seekbar: SeekBar? = null
+    private var artiste: TextView? = null
     private var player: MediaPlayer? = null
-    private var playButton: ImageButton? = null
+    private var playButton: ImageView? = null
     internal var song: ArrayList<KSongInformations>? = null
-    internal var streaming = "http://radioking.com/play/run-radio"
-    internal val context: Context = this
     internal var cover: ImageView? = null
     var buttonOk: Boolean = false
     private var isStarted = true
-    private var currentFile = ""
-    private var isMoveingSeekBar = false
-
-    private val handler = Handler()
-
-    private val updatePositionRunnable = Runnable { updatePosition() }
-
+    var name: TextView?= null
+    var layout_name: TextView?= null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.player_view)
+        setContentView(R.layout.player_layout)
+        name = findViewById<TextView>(R.id.name) as TextView
+        layout_name = findViewById<TextView>(R.id.layout_name) as TextView
+        title = findViewById<TextView>(R.id.song) as TextView
+        artiste = findViewById<TextView>(R.id.artiste) as TextView
+//        seekbar = findViewById(R.id.seekbar) as SeekBar
+        playButton = findViewById<ImageView>(R.id.play) as ImageView
+        cover = findViewById<ImageView>(R.id.cover) as ImageView
+        setFont(name!!, "Archive.otf", "RUN RADIO")
+        setFont(layout_name!!, "Geomanist-Book.otf", "En direct")
 
-        title = findViewById(R.id.song) as TextView
-        seekbar = findViewById(R.id.seekbar) as SeekBar
-        playButton = findViewById(R.id.play) as ImageButton
-        cover = findViewById(R.id.cover) as ImageView
-
-
-        player = MediaPlayer()
-        player!!.setWakeMode(applicationContext, PowerManager.PARTIAL_WAKE_LOCK)
-        player!!.setAudioStreamType(AudioManager.STREAM_MUSIC)
-        PlayerTask().execute(streaming)
-
-        player!!.setOnCompletionListener(onCompletion)
-        player!!.setOnErrorListener(onError)
-        seekbar!!.setOnSeekBarChangeListener(seekBarChanged)
-        playButton!!.setImageResource(android.R.drawable.ic_menu_upload)
+        Log.i("DEBUG", "" + APIRadio.getShared().bool!! + "ETAPE 1")
+        isStarted = APIRadio.getShared().bool!!
+        buttonOk = isStarted
+        player = APIRadio.getShared().player
+        RepetAction()
+        if (isStarted == false)
+            playButton!!.setImageResource(R.drawable.play_button)
+        else if (isStarted == true)
+            playButton!!.setImageResource(R.drawable.pause)
         playButton!!.setOnClickListener(onButtonClick)
-    }
-
-    internal inner class PlayerTask : AsyncTask<String, Void, Boolean>() {
-
-        override fun doInBackground(vararg strings: String): Boolean? {
-            try {
-                player!!.setDataSource(strings[0])
-                player!!.prepare()
-                RepetAction()
-
-
-            } catch (e: IOException) {
-                e.printStackTrace()
-            }
-
-            return true
-        }
-
-        override fun onPostExecute(aBoolean: Boolean?) {
-            super.onPostExecute(aBoolean)
-            playButton!!.isEnabled = true
-        }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-
-        //handler.removeCallbacks(updatePositionRunnable)
-        //player!!.stop()
-        //player!!.reset()
-        //player!!.release()
-
-       // player = null
-    }
-
-    private fun startPlay(file: String) {
-        Log.i("Selected: ", file)
-
-        title!!.text = file
-        seekbar!!.progress = 0
-
-        player!!.stop()
-        player!!.reset()
-
-        try {
-            player!!.setDataSource(file)
-            player!!.prepare()
-            player!!.start()
-        } catch (e: IllegalArgumentException) {
-            e.printStackTrace()
-        } catch (e: IllegalStateException) {
-            e.printStackTrace()
-        } catch (e: IOException) {
-            e.printStackTrace()
-        }
-
-        seekbar!!.max = player!!.duration
-        playButton!!.setImageResource(android.R.drawable.ic_media_pause)
-
-        updatePosition()
-
-        isStarted = true
-    }
-
-    private fun stopPlay() {
-        player!!.stop()
-        player!!.reset()
-        playButton!!.setImageResource(android.R.drawable.ic_media_play)
-        handler.removeCallbacks(updatePositionRunnable)
-        seekbar!!.progress = 0
-
-        isStarted = false
-    }
-
-    private fun updatePosition() {
-        handler.removeCallbacks(updatePositionRunnable)
-
-        seekbar!!.progress = player!!.currentPosition
-
-        handler.postDelayed(updatePositionRunnable, UPDATE_FREQUENCY.toLong())
     }
 
     private val onButtonClick = View.OnClickListener { v ->
         if (buttonOk == true) {
+            Log.i("DEBUG", "" + v.id)
             when (v.id) {
                 R.id.play -> {
                     if (player!!.isPlaying) {
-                        handler.removeCallbacks(updatePositionRunnable)
+                        // handler.removeCallbacks(updatePositionRunnable)
                         player!!.pause()
-                        playButton!!.setImageResource(android.R.drawable.ic_media_play)
+                        playButton!!.setImageResource(R.drawable.play_button)
+                        APIRadio.getShared().bool = false
+                        Log.i("DEBUG", "" + APIRadio.getShared().bool)
                     } else {
-                        if (isStarted) {
-                            player!!.start()
-                            playButton!!.setImageResource(android.R.drawable.ic_media_pause)
 
-                            updatePosition()
+                        player!!.start()
+                        playButton!!.setImageResource(R.drawable.pause)
+                        APIRadio.getShared().bool = true
+                        Log.i("DEBUG", "" + APIRadio.getShared().bool)
 
-                        }
                     }
                 }
-            }
-        }
-    }
-
-    private val onCompletion = MediaPlayer.OnCompletionListener { stopPlay() }
-
-    private val onError = MediaPlayer.OnErrorListener { mp, what, extra -> false }
-
-    private val seekBarChanged = object : SeekBar.OnSeekBarChangeListener {
-        override fun onStopTrackingTouch(seekBar: SeekBar) {
-            isMoveingSeekBar = false
-        }
-
-        override fun onStartTrackingTouch(seekBar: SeekBar) {
-            isMoveingSeekBar = true
-        }
-
-        override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
-            if (isMoveingSeekBar) {
-                player!!.seekTo(progress)
-
-                Log.i("OnSeekBarChangeListener", "onProgressChanged")
             }
         }
     }
@@ -201,49 +104,79 @@ class PlayAudioExample : AppCompatActivity() {
 
         internal inner class MonAction : TimerTask() {
             var nbrRepetitions = 100
-
+            var conMgr = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
             override fun run() {
-                if (nbrRepetitions > 0) {
-                    song = KSongInformations().getSongInformations()
-                    title!!.post(object : Runnable {
-                        internal var i = 0
-                        override fun run() {
-                            title!!.text = song!![0].name + " - " + song!![0].artiste
-                            if (buttonOk == false) {
-                                playButton!!.setImageResource(android.R.drawable.ic_media_play)
-                                buttonOk = true
+                if (conMgr.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED
+                        || conMgr.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+                    if (nbrRepetitions > 0) {
+                        song = KSongInformations().getSongInformations()
+                        title!!.post(object : Runnable {
+                            internal var i = 0
+                            override fun run() {
+                                if (buttonOk == false) {
+                                    playButton!!.setImageResource(R.drawable.play_button)
+                                    buttonOk = true
 
+                                }
+                                setFont(title!!, "OpenSans-Semibold.ttf", song!![0].name!!)
+
+                                println("change title")
+                                i++
+                                if (i == 100)
+                                    i = 0
+                                title!!.postDelayed(this, 5000)
                             }
+                        })
+                        artiste!!.post(object : Runnable {
+                            internal var i = 0
+                            override fun run() {
+                                setFont(artiste!!, "OpenSans-Regular.ttf", song!![0].artiste!!)
 
-                            println("changeText")
-                            i++
-                            if (i == 100)
-                                i = 0
-                            title!!.postDelayed(this, 5000)
-                        }
-                    })
-                    cover!!.post(object : Runnable {
-                        internal var i = 0
-                        override fun run() {
-                            if (song!![0].pochette == "null") {
-                                cover!!.setImageResource(R.drawable.cover)
-                            } else {
-                                Picasso.with(applicationContext).load(song!![0].pochette).into(cover)
-
+                                println("change artiste")
+                                i++
+                                if (i == 100)
+                                    i = 0
+                                artiste!!.postDelayed(this, 5000)
                             }
-                            i++
-                            if (i == 100)
-                                i = 0
-                            cover!!.postDelayed(this, 5000)
-                        }
-                    })
-                    println("Ca bosse dur!")
-                    nbrRepetitions--
-                } else {
-                    println("Terminé!")
-                    t.cancel()
+                        })
+                        cover!!.post(object : Runnable {
+                            internal var i = 0
+                            override fun run() {
+                                val cornerRadius = 50.0f
+
+                                if (song!![0].pochette == "null") {
+                                    cover!!.setImageResource(R.drawable.cover)
+                                } else {
+                                    Picasso.with(applicationContext).load(song!![0].pochette).transform(RoundedCornersTransformation(20, 20)).into(cover)
+
+                                }
+                                i++
+                                if (i == 100)
+                                    i = 0
+                                cover!!.postDelayed(this, 5000)
+                            }
+                        })
+                        println("Ca bosse dur!")
+                        nbrRepetitions--
+                    } else {
+                        println("Terminé!")
+                        t.cancel()
+                    }
                 }
             }
+        }
+    }
+
+    fun setFont(textView: TextView, fontName: String?, setText: String) {
+        if (fontName != null) {
+            try {
+                val typeface = Typeface.createFromAsset(assets, "fonts/" + fontName)
+                textView.typeface = typeface
+                textView.text = setText
+            } catch (e: Exception) {
+                Log.e("FONT", fontName + " not found", e)
+            }
+
         }
     }
 
