@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/parametre">
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:text="TextView"
+        android:textColor="@android:color/white"
+        android:textSize="32sp"
+        tools:text="RUN RADIO"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"/>
+
+    <TextView
+        android:id="@+id/layout_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Accueil"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:layout_below="@+id/name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="7dp"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"/>
+
+    <ImageButton
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:src="@drawable/contact"
+        android:background="@color/cardview_dark_background"
+        android:layout_marginTop="16dp"
+        android:id="@+id/imageButton"
+        android:layout_below="@+id/layout_name"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:background="@color/cardview_dark_background"
+        android:src="@drawable/evaluation"
+        android:layout_marginTop="59dp"
+        android:layout_below="@+id/imageButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/imageButton2" />
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:src="@drawable/a_propos"
+        android:background="@color/cardview_dark_background"
+        android:layout_marginTop="59dp"
+        android:layout_below="@+id/imageButton2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>
