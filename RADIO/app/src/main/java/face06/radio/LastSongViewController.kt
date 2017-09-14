@@ -1,11 +1,13 @@
 package face06.radio
 
 import android.content.Context
+import android.graphics.Typeface
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.TextView
 import com.squareup.picasso.Picasso
 
 /**
@@ -49,7 +51,7 @@ class LastSongViewController(context: Context, infoSong: ArrayList<KSongInformat
             view = convertView
             vh = view.tag as KTableViewCell
         }
-        vh.name_search.text = infoSong[position].name
+        setFont(vh.name_search, "Geomanist-Book.otf", infoSong[position].name!!)
         //vh.cover.setImageResource(infoSong[position].pochette)
         if (infoSong[position].pochette == "null" || infoSong[position].pochette == "") {
             vh.cover.setImageResource(R.drawable.cover)
@@ -60,8 +62,20 @@ class LastSongViewController(context: Context, infoSong: ArrayList<KSongInformat
             vh.cover.layoutParams.width = 200
             vh.cover.layoutParams.height = 200
         }
-
-        vh.artist_search.text = infoSong[position].artiste
+        setFont(vh.artist_search, "Geomanist-Light.otf", infoSong[position].artiste!!)
         return view
+    }
+
+    fun setFont(textView: TextView, fontName: String?, setText: String) {
+        if (fontName != null) {
+            try {
+                val typeface = Typeface.createFromAsset(context.assets, "fonts/" + fontName)
+                textView.typeface = typeface
+                textView.text = setText
+            } catch (e: Exception) {
+                Log.e("FONT", fontName + " not found", e)
+            }
+
+        }
     }
 }

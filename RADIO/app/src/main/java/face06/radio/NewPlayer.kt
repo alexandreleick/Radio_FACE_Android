@@ -52,7 +52,6 @@ class PlayAudioExample : Activity() {
         layout_name = findViewById<TextView>(R.id.layout_name) as TextView
         title = findViewById<TextView>(R.id.song) as TextView
         artiste = findViewById<TextView>(R.id.artiste) as TextView
-//        seekbar = findViewById(R.id.seekbar) as SeekBar
         playButton = findViewById<ImageView>(R.id.play) as ImageView
         cover = findViewById<ImageView>(R.id.cover) as ImageView
         setFont(name!!, "Archive.otf", "RUN RADIO")
@@ -142,8 +141,6 @@ class PlayAudioExample : Activity() {
                         cover!!.post(object : Runnable {
                             internal var i = 0
                             override fun run() {
-                                val cornerRadius = 50.0f
-
                                 if (song!![0].pochette == "null") {
                                     cover!!.setImageResource(R.drawable.cover)
                                 } else {

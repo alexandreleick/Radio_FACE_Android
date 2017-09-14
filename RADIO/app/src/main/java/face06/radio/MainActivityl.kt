@@ -88,6 +88,8 @@ class KMainActivityl : Activity() {
         })
 
         lastSong!!.setOnClickListener({
+            val paramDialog = LastSongListViewController(this, song!!)
+            paramDialog.show()
             Log.i("DEBUG", "" + "2")
         })
         //ReaptAction()
