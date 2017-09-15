@@ -35,9 +35,9 @@ class KMainActivityl : Activity() {
     var artiste: TextView?= null
     var name: TextView?= null
     var layout_name: TextView?= null
-    var inLive: Button?= null
+    var inLive: ImageView?= null
     var settings: ImageView?= null
-    var lastSong: Button? = null
+    var lastSong: ImageView? = null
      var player: MediaPlayer? = null
      var playButton: ImageView? = null
     var buttonOk: Boolean = false
@@ -51,8 +51,8 @@ class KMainActivityl : Activity() {
         setContentView(R.layout.home_layout)
         name = findViewById<TextView>(R.id.name) as TextView
         layout_name = findViewById<TextView>(R.id.layout_name) as TextView
-        inLive = findViewById<Button>(R.id.inLive) as Button
-        lastSong = findViewById<Button>(R.id.lastSong) as Button
+        inLive = findViewById<Button>(R.id.inLive) as ImageView
+        lastSong = findViewById<Button>(R.id.lastSong) as ImageView
         title = findViewById<TextView>(R.id.title) as TextView
         artiste = findViewById<TextView>(R.id.artiste) as TextView
         settings = findViewById<Button>(R.id.settings) as ImageView

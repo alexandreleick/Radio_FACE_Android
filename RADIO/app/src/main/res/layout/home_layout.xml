@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    android:background="@android:color/black">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -57,21 +57,21 @@
                 android:src="@drawable/settings" />
         </RelativeLayout>
 
-        <Button
+        <ImageView
             android:id="@+id/inLive"
             android:layout_width="wrap_content"
             android:layout_gravity="center"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="@drawable/play" />
+            android:src="@drawable/play" />
 
-        <Button
+        <ImageView
             android:id="@+id/lastSong"
             android:layout_width="wrap_content"
             android:layout_gravity="center"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="@drawable/derniere_musique" />
+            android:src="@drawable/derniere_musique" />
 
         <RelativeLayout
             android:layout_width="match_parent"
