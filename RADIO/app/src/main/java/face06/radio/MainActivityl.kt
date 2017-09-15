@@ -36,7 +36,7 @@ class KMainActivityl : Activity() {
     var name: TextView?= null
     var layout_name: TextView?= null
     var inLive: Button?= null
-    var settings: Button?= null
+    var settings: ImageView?= null
     var lastSong: Button? = null
      var player: MediaPlayer? = null
      var playButton: ImageView? = null
@@ -55,7 +55,7 @@ class KMainActivityl : Activity() {
         lastSong = findViewById<Button>(R.id.lastSong) as Button
         title = findViewById<TextView>(R.id.title) as TextView
         artiste = findViewById<TextView>(R.id.artiste) as TextView
-        settings = findViewById<Button>(R.id.settings) as Button
+        settings = findViewById<Button>(R.id.settings) as ImageView
         playButton = findViewById<ImageView>(R.id.play) as ImageView
 
         setFont(name!!, "Archive.otf", "RUN RADIO")

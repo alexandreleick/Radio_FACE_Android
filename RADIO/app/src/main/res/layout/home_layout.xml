@@ -3,103 +3,128 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/accueil">
+    >
 
-    <TextView
-        android:id="@+id/title"
-        android:text="TITRE"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@android:color/white"
-        android:textSize="23.33dp"
-        android:textStyle="bold"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="114dp"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/play"
+        android:orientation="vertical"
+        android:background="@drawable/accueil_test">
 
-    <TextView
-        android:text="ARTISTE"
-        android:id="@+id/artiste"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
-        android:textAllCaps="false"
-        android:textColor="#9094A7"
-        android:textSize="14.44dp"
-        android:layout_alignTop="@+id/title"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:text="TextView"
-        android:textColor="@android:color/white"
-        android:textSize="32sp"
-        tools:text="RUN RADIO"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/layout_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Accueil"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        android:layout_below="@+id/name"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="7dp"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"/>
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:gravity="center|bottom"
+                    android:layout_height="0dp"
+                    android:layout_weight="2"
+                    android:textColor="@android:color/white"
+                    android:textSize="32sp"
+                    tools:text="RUN RADIO" />
 
-    <Button
-        android:id="@+id/inLive"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/play"
-        android:layout_marginTop="9dp"
-        android:layout_alignTop="@+id/layout_name"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+                <TextView
+                    android:id="@+id/layout_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center|top"
+                    android:text="Accueil"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp" />
 
-    <Button
-        android:id="@+id/lastSong"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/derniere_musique"
-        android:layout_above="@+id/artiste"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+            </LinearLayout>
 
-    <Button
-        android:id="@+id/settings"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:background="@drawable/settings"
-        android:layout_marginRight="26dp"
-        android:layout_marginEnd="26dp"
-        android:layout_alignTop="@+id/name"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+
+
+            <ImageView
+                android:id="@+id/settings"
+                android:layout_width="25dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginEnd="26dp"
+                android:layout_marginRight="26dp"
+                android:src="@drawable/settings" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/inLive"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/play" />
+
+        <Button
+            android:id="@+id/lastSong"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/derniere_musique" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
+                    android:gravity="center|bottom"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="TITRE"
+                    android:textColor="@android:color/white"
+                    android:textSize="23.33dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/artiste"
+                    android:layout_width="match_parent"
+                    android:gravity="center|top"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:text="ARTISTE"
+                    android:textAllCaps="false"
+                    android:textColor="#9094A7"
+                    android:textSize="14.44dp" />
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/play"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/play_button"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="13dp"
+        android:paddingBottom="13dp"
+        android:paddingTop="13dp"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"/>
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:src="@drawable/play_button" />
 
 
 </RelativeLayout>
