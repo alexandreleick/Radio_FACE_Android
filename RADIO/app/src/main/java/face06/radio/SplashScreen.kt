@@ -31,6 +31,13 @@ class  SplashScreen : Activity() {
                     APIRadio.getShared().player = player
                     APIRadio.getShared().bool = false
                     APIRadio.getShared().init = 1
+                    Handler().postDelayed(Runnable {
+                        kotlin.run {
+                            var i: Intent = Intent(this, KMainActivityl::class.java)
+                            startActivity(i)
+                            finish()
+                        }
+                    }, SPLASH_TIME_OUT)
                 })
             }
         } else {
@@ -43,13 +50,7 @@ class  SplashScreen : Activity() {
             simpleAlert.show()
         }
 
-        Handler().postDelayed(Runnable {
-            kotlin.run {
-                var i: Intent = Intent(this, KMainActivityl::class.java)
-                startActivity(i)
-                finish()
-            }
-        }, SPLASH_TIME_OUT)
+
     }
 }
 
