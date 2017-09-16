@@ -3,95 +3,121 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/direct">
+    android:background="@android:color/black">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/play"
+        android:orientation="vertical"
+        android:background="@drawable/accueil_test">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1.63"
+                    android:gravity="center|bottom"
+                    android:textColor="@android:color/white"
+                    android:textSize="32sp"
+                    tools:text="RUN RADIO" />
+
+                <TextView
+                    android:id="@+id/layout_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center|top"
+                    android:text="Accueil"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+
+
+            <ImageView
+                android:id="@+id/button"
+                android:layout_width="10dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginStart="26dp"
+                android:layout_marginLeft="26dp"
+                android:src="@drawable/left_arrow" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/cover"
+            android:layout_width="wrap_content"
+            android:layout_height="125dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:src="@drawable/cover" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/song"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center|bottom"
+                    android:text="TITRE"
+                    android:textColor="@android:color/white"
+                    android:textSize="23.33dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/artiste"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_weight="1"
+                    android:gravity="center|top"
+                    android:text="ARTISTE"
+                    android:textAllCaps="false"
+                    android:textColor="#9094A7"
+                    android:textSize="14.44dp" />
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
 
     <ImageView
-        android:id="@+id/cover"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_weight="1.0"
-        android:layout_marginBottom="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="@dimen/activity_horizontal_margin"
-        android:src="@drawable/cover"
-        android:layout_above="@+id/song"
-        android:layout_centerHorizontal="true" />
 
-    <TextView
-        android:id="@+id/song"
-        android:text="TITRE"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@android:color/white"
-        android:textSize="23.33dp"
-        android:textStyle="bold"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="114dp"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"/>
-
-    <TextView
-        android:text="ARTISTE"
-        android:id="@+id/artiste"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
-        android:textAllCaps="false"
-        android:textColor="#9094A7"
-        android:textSize="14.44dp"
-        android:layout_alignTop="@+id/song"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"/>
-
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:text="TextView"
-        android:textColor="@android:color/white"
-        android:textSize="32sp"
-        tools:text="RUN RADIO"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"/>
-
-    <TextView
-        android:id="@+id/layout_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="En direct"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        android:layout_below="@+id/name"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="7dp"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"/>
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="11dp"
-        android:layout_marginStart="11dp"
-        android:text="Button"
-        android:layout_alignTop="@+id/name"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <ImageView
         android:id="@+id/play"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/play_button"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="13dp"
+        android:paddingBottom="13dp"
+        android:paddingTop="13dp"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"/>
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:src="@drawable/play_button" />
 
 
 </RelativeLayout>

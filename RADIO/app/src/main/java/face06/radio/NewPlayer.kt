@@ -3,6 +3,7 @@ package face06.radio
 import android.app.Activity
 import android.app.ListActivity
 import android.content.Context
+import android.content.Intent
 import android.database.Cursor
 import android.graphics.Typeface
 import android.media.AudioManager
@@ -38,6 +39,7 @@ class PlayAudioExample : Activity() {
     private var artiste: TextView? = null
     private var player: MediaPlayer? = null
     private var playButton: ImageView? = null
+    private var returnButton: ImageView? = null
     internal var song: ArrayList<KSongInformations>? = null
     internal var cover: ImageView? = null
     var buttonOk: Boolean = false
@@ -54,6 +56,7 @@ class PlayAudioExample : Activity() {
         artiste = findViewById<TextView>(R.id.artiste) as TextView
         playButton = findViewById<ImageView>(R.id.play) as ImageView
         cover = findViewById<ImageView>(R.id.cover) as ImageView
+        returnButton = findViewById<ImageView>(R.id.button) as ImageView
         setFont(name!!, "Archive.otf", "RUN RADIO")
         setFont(layout_name!!, "Geomanist-Book.otf", "En direct")
 
@@ -67,6 +70,9 @@ class PlayAudioExample : Activity() {
         else if (isStarted == true)
             playButton!!.setImageResource(R.drawable.pause)
         playButton!!.setOnClickListener(onButtonClick)
+        returnButton!!.setOnClickListener({
+            startActivity(Intent(this, KMainActivityl::class.java))
+        })
     }
 
     private val onButtonClick = View.OnClickListener { v ->

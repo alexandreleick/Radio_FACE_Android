@@ -3,6 +3,7 @@ package face06.radio
 import android.app.Activity
 import android.app.Dialog
 import android.content.Context
+import android.content.Intent
 import android.graphics.Typeface
 import android.media.MediaPlayer
 import android.net.ConnectivityManager
@@ -34,6 +35,8 @@ class LastSongListViewController(context: Context, sInfo: ArrayList<KSongInforma
     private var isStarted = true
     var name: TextView?= null
     var layout_name: TextView?= null
+    private var returnButton: ImageView? = null
+
 
     init {
         this.sInfo = sInfo
@@ -44,6 +47,7 @@ class LastSongListViewController(context: Context, sInfo: ArrayList<KSongInforma
         Log.i("DEBUG", "ici" + sInfo!!.size)
         val lv = findViewById<ListView>(R.id.list)
         lv.adapter = LastSongViewController(context, sInfo!!)
+        returnButton = findViewById<ImageView>(R.id.button) as ImageView
         name = findViewById<TextView>(R.id.name) as TextView
         layout_name = findViewById<TextView>(R.id.layout_name) as TextView
         title = findViewById<TextView>(R.id.title) as TextView
@@ -61,6 +65,9 @@ class LastSongListViewController(context: Context, sInfo: ArrayList<KSongInforma
         else if (isStarted == true)
             playButton!!.setImageResource(R.drawable.pause)
         playButton!!.setOnClickListener(onButtonClick)
+        returnButton!!.setOnClickListener({
+            context.startActivity(Intent(context, KMainActivityl::class.java))
+        })
 
     }
     private val onButtonClick = View.OnClickListener { v ->
