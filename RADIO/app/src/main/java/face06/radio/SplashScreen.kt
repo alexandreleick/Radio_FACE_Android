@@ -15,6 +15,11 @@ import android.support.v7.app.AlertDialog
  * StaffBooker Company.
  */
 
+/**
+ * Classe permettant de lancer une page de chargement avec un gif afin de charger durée le temps
+ * de chargement le JSON de la radio ainsi que le playerMedia contenant le lien streaming.
+ */
+
 class  SplashScreen : Activity() {
     companion object {
         var SPLASH_TIME_OUT: Long = 3000

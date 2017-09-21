@@ -81,7 +81,6 @@ class PlayAudioExample : Activity() {
             when (v.id) {
                 R.id.play -> {
                     if (player!!.isPlaying) {
-                        // handler.removeCallbacks(updatePositionRunnable)
                         player!!.pause()
                         playButton!!.setImageResource(R.drawable.play_button)
                         APIRadio.getShared().bool = false
@@ -124,7 +123,6 @@ class PlayAudioExample : Activity() {
 
                                 }
                                 setFont(title!!, "OpenSans-Semibold.ttf", song!![0].name!!)
-
                                 println("change title")
                                 i++
                                 if (i == 100)

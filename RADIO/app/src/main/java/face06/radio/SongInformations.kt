@@ -10,11 +10,20 @@ import java.util.ArrayList
  * StaffBooker Company.
  */
 
+/**
+ * Classe modele contenant les données d'un album.
+ */
+
 class KSongInformations {
 
     var name: String? = null
     var artiste: String? = null
     var pochette: String? = null
+
+    /**
+     * @return : ArrayList<KSongInformation>.
+     * Méthode permettant de récuperer le JSON.
+     */
 
     fun getSongInformations(): ArrayList<KSongInformations> {
 
@@ -27,10 +36,12 @@ class KSongInformations {
             val connection = url.openConnection() as HttpURLConnection
             connection.connect()
             val inputStream = connection.inputStream
+
             /*
              * InputStreamOperations est une classe complémentaire:
              * Elle contient une méthode InputStreamToString.
              */
+
             val result = InputStreamOperations.InputStreamToString(inputStream)
 
             // On récupère le JSON complet

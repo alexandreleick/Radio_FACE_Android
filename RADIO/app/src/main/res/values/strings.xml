@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">RADIO</string>
+    <string name="app_name">Run Radio</string>
+    <string name="title_activity_a_propos">a_propos</string>
 </resources>

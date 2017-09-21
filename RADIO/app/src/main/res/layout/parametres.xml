@@ -1,67 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+xmlns:tools="http://schemas.android.com/tools"
+android:orientation="vertical" android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@android:color/black">
+
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/parametre">
+    android:orientation="vertical"
+    android:background="@drawable/accueil_test">
 
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:text="TextView"
-        android:textColor="@android:color/white"
-        android:textSize="32sp"
-        tools:text="RUN RADIO"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"/>
-
-    <TextView
-        android:id="@+id/layout_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Accueil"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        android:layout_below="@+id/name"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="7dp"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"/>
-
-    <ImageButton
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:src="@drawable/contact"
-        android:background="@color/cardview_dark_background"
-        android:layout_marginTop="16dp"
-        android:id="@+id/imageButton"
-        android:layout_below="@+id/layout_name"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:background="@color/cardview_dark_background"
-        android:src="@drawable/evaluation"
-        android:layout_marginTop="59dp"
-        android:layout_below="@+id/imageButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/imageButton2" />
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:src="@drawable/a_propos"
-        android:background="@color/cardview_dark_background"
-        android:layout_marginTop="59dp"
-        android:layout_below="@+id/imageButton2"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/return_bar"
+            android:padding="10dp"
+            android:src="@drawable/left_arrow"
+            android:layout_marginTop="48dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="26dp"
+            android:layout_marginStart="26dp" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.30"
+                android:gravity="center|bottom"
+                android:textColor="@android:color/white"
+                android:textSize="32sp"
+                android:text="RUN RADIO" />
+
+            <TextView
+                android:id="@+id/layout_name"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center|top"
+                android:text="Accueil"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/a_propos"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_height="0dp"
+        android:layout_weight="0.55"
+        android:src="@drawable/a_propos" />
+
+    <ImageView
+        android:id="@+id/evaluer"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_height="0dp"
+        android:layout_weight="0.55"
+        android:src="@drawable/evaluation" />
+
+    <ImageView
+        android:id="@+id/contact"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_height="0dp"
+        android:layout_weight="0.55"
+        android:src="@drawable/contact" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <ImageView
+            android:id="@+id/facebook"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.55"
+            android:src="@drawable/facebook_logo"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="83dp"
+            android:layout_marginStart="83dp" />
+
+        <ImageView
+            android:id="@+id/insta"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.55"
+            android:src="@drawable/instagram_logo"
+            android:layout_marginRight="88dp"
+            android:layout_marginEnd="88dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+    </RelativeLayout>
+
+</LinearLayout>
 </RelativeLayout>

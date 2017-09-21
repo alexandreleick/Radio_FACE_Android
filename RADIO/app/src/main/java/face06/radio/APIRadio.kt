@@ -28,6 +28,11 @@ class APIRadio {
     var bool: Boolean? = null
     var player: MediaPlayer? = null
     var init: Int = 0
+
+    /**
+     * Singleton permettant d'initialiser le lien streaming et le bouton de lecture.
+     */
+
     companion object {
         var instance: APIRadio? = null
         fun getShared(): APIRadio {
@@ -38,17 +43,23 @@ class APIRadio {
         }
     }
 
+    /**
+     * @param applicationContext
+     * @return : lien player permettant de recuperer le lien streaming.
+     */
+
     fun manageRadio(applicationContext: Context, completionHandler: (player: MediaPlayer) -> Unit ){
         var streaming = "http://radioking.com/play/run-radio"
         player = MediaPlayer()
         player!!.setWakeMode(applicationContext, PowerManager.PARTIAL_WAKE_LOCK)
         player!!.setAudioStreamType(AudioManager.STREAM_MUSIC)
         PlayerTask().execute(streaming)
-
-        //player!!.setOnCompletionListener(onCompletion)
-        //player!!.setOnErrorListener(onError)
         completionHandler(player!!)
     }
+
+    /**
+     * Set la radio dès le début du lancement (SplashScreen)
+     */
 
     internal inner class PlayerTask : AsyncTask<String, Void, Boolean>() {
 

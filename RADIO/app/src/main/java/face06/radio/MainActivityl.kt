@@ -21,11 +21,20 @@ import android.net.NetworkInfo
 import android.support.v7.app.AlertDialog
 import android.view.View
 import android.widget.Toast
+import android.R.attr.password
+
+
 
 
 /**
  * Created by Alexandre Leick on 08/09/2017,
  * StaffBooker Company.
+ */
+
+/**
+ * Classe principale, permettant d'initialiser l'application
+ * ! ATTENTION ! La récupération des informations de la radio est dans le layout
+ * SplashSreen .
  */
 
 class KMainActivityl : Activity() {
@@ -38,12 +47,10 @@ class KMainActivityl : Activity() {
     var inLive: ImageView?= null
     var settings: ImageView?= null
     var lastSong: ImageView? = null
-     var player: MediaPlayer? = null
-     var playButton: ImageView? = null
+    var player: MediaPlayer? = null
+    var playButton: ImageView? = null
     var buttonOk: Boolean = false
-     var isStarted = true
-    var main: PlayAudioExample?= null
-
+    var isStarted = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,26 +70,25 @@ class KMainActivityl : Activity() {
         player = APIRadio.getShared().player
 
         ReaptAction()
-            SystemClock.sleep(100)
-            isStarted = APIRadio.getShared().bool!!
-            buttonOk = isStarted
-            if (isStarted == false)
-                playButton!!.setImageResource(R.drawable.play_button)
-            else if (isStarted == true)
-                playButton!!.setImageResource(R.drawable.pause)
-            playButton!!.setOnClickListener(onButtonClick)
-
-        //setFont(artiste!!, "OpenSans-Regular.ttf", song!![0].artiste!!)
-        //setFont(title!!, "OpenSans-Regular.ttf", song!![0].name!!)
-
+        SystemClock.sleep(100)
+        isStarted = APIRadio.getShared().bool!!
+        buttonOk = isStarted
+        if (isStarted == false)
+            playButton!!.setImageResource(R.drawable.play_button)
+        else if (isStarted == true)
+            playButton!!.setImageResource(R.drawable.pause)
+        playButton!!.setOnClickListener(onButtonClick)
         inLive!!.setOnClickListener({
-            Log.i("DEBUG", "" + "1")
+            Log.i("DEBUG", "" + " En live ")
             intent = Intent(this, PlayAudioExample::class.java)
             startActivity(intent)
         })
 
         settings!!.setOnClickListener({
-            Log.i("DEBUG", "" + "3")
+
+
+
+            Log.i("DEBUG", "" + " Paramètres ")
             intent = Intent(this, Parametre::class.java)
             startActivity(intent)
         })
@@ -90,12 +96,8 @@ class KMainActivityl : Activity() {
         lastSong!!.setOnClickListener({
             val paramDialog = LastSongListViewController(this, song!!)
             paramDialog.show()
-            Log.i("DEBUG", "" + "2")
+            Log.i("DEBUG", "" + "Dernière musique ")
         })
-        //ReaptAction()
-        //title!!.text = song!![0].name
-        //artiste!!.text = song!![0].artiste
-
     }
 
     private val onButtonClick = View.OnClickListener { v ->
@@ -107,17 +109,15 @@ class KMainActivityl : Activity() {
             when (v.id) {
                 R.id.play -> {
                     if (player!!.isPlaying) {
-                        // handler.removeCallbacks(updatePositionRunnable)
                         player!!.pause()
                         playButton!!.setImageResource(R.drawable.play_button)
                         APIRadio.getShared().bool = false
-                        Log.i("DEBUG", "" + APIRadio.getShared().bool)
+                        Log.i("DEBUG", "J'étais en lecture, je me mets en pause. " + APIRadio.getShared().bool)
                     } else {
-
                         player!!.start()
                         playButton!!.setImageResource(R.drawable.pause)
                         APIRadio.getShared().bool = true
-                        Log.i("DEBUG", "" + APIRadio.getShared().bool)
+                        Log.i("DEBUG", "J'étais en pause, je me mets en lecture. " + APIRadio.getShared().bool)
 
                     }
                 }
@@ -133,6 +133,13 @@ class KMainActivityl : Activity() {
         }
     }
 
+    /**
+     * Méthode permettant de definir une police et un input pour un textView.
+     * @param textView : Output , textview qui sera modifié.
+     * @param fontName : Police disponible dans le dossier "font".
+     * @param setText : String
+     */
+
     fun setFont(textView: TextView, fontName: String?, setText: String) {
         if (fontName != null) {
             try {
@@ -145,6 +152,12 @@ class KMainActivityl : Activity() {
 
         }
     }
+
+    /**
+     * Classe permettant d'actualiser toutes les secondes (a peu près), les informations : titres, artistes, pochette
+     * On verifie aussi si une connexion internet est active sur le model auquel cas un message sera pop-up !
+     */
+
     internal inner class ReaptAction {
         var t: Timer
 
