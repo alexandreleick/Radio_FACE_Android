@@ -45,6 +45,13 @@ class  SplashScreen : Activity() {
                     }, SPLASH_TIME_OUT)
                 })
             }
+            Handler().postDelayed(Runnable {
+                kotlin.run {
+                    var i: Intent = Intent(this, KMainActivityl::class.java)
+                    startActivity(i)
+                    finish()
+                }
+            }, SPLASH_TIME_OUT)
         } else {
             val simpleAlert = AlertDialog.Builder(this@SplashScreen).create()
             simpleAlert.setTitle("Attention")
