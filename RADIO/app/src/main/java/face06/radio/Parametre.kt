@@ -3,6 +3,7 @@ package face06.radio
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Typeface
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
@@ -20,6 +21,8 @@ class Parametre : Activity() {
     var eval: ImageView?= null
     var contact: ImageView?= null
     var return_bar: ImageView?= null
+    var facebook: ImageView?= null
+    var insta: ImageView?= null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +33,8 @@ class Parametre : Activity() {
         eval = findViewById<ImageView>(R.id.evaluer) as ImageView
         contact = findViewById<ImageView>(R.id.contact) as ImageView
         return_bar = findViewById<ImageView>(R.id.return_bar) as ImageView
+        facebook = findViewById<ImageView>(R.id.facebook) as ImageView
+        insta = findViewById<ImageView>(R.id.insta) as ImageView
         setFont(name!!, "Archive.otf", "RUN RADIO")
         setFont(layout_name!!, "Geomanist-Book.otf", "Accueil")
 
@@ -46,6 +51,22 @@ class Parametre : Activity() {
         })
         return_bar!!.setOnClickListener({
             startActivity(Intent(this, KMainActivityl::class.java))
+        })
+
+        facebook!!.setOnClickListener({
+            val intent = Intent()
+            intent.action = Intent.ACTION_VIEW
+            intent.addCategory(Intent.CATEGORY_BROWSABLE)
+            intent.data = Uri.parse("https://www.facebook.com/RunRadioNice/")
+            startActivity(intent)
+        })
+
+        insta!!.setOnClickListener({
+            val intent = Intent()
+            intent.action = Intent.ACTION_VIEW
+            intent.addCategory(Intent.CATEGORY_BROWSABLE)
+            intent.data = Uri.parse("https://www.instagram.com/runradio/")
+            startActivity(intent)
         })
     }
 

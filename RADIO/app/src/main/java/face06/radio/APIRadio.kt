@@ -1,6 +1,8 @@
 package face06.radio
 
+import android.app.Activity
 import android.content.Context
+import android.graphics.Typeface
 import android.media.AudioManager
 import android.media.MediaPlayer
 import android.os.AsyncTask
@@ -24,7 +26,7 @@ import java.util.*
  * StaffBooker Company.
  */
 
-class APIRadio {
+class APIRadio : Activity() {
     var bool: Boolean? = null
     var player: MediaPlayer? = null
     var init: Int = 0
