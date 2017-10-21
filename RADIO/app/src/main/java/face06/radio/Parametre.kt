@@ -36,7 +36,7 @@ class Parametre : Activity() {
         facebook = findViewById<ImageView>(R.id.facebook) as ImageView
         insta = findViewById<ImageView>(R.id.insta) as ImageView
         setFont(name!!, "Archive.otf", "RUN RADIO")
-        setFont(layout_name!!, "Geomanist-Book.otf", "Accueil")
+        setFont(layout_name!!, "Geomanist-Book.otf", "Paramètre")
 
         contact!!.setOnClickListener({
             val mails = arrayOf("alexandre.leick@epitech.eu")
