@@ -70,9 +70,12 @@ class PlayAudioExample : Activity() {
         else if (isStarted == true)
             playButton!!.setImageResource(R.drawable.pause)
         playButton!!.setOnClickListener(onButtonClick)
-        returnButton!!.setOnClickListener({
-            startActivity(Intent(this, KMainActivityl::class.java))
-        })
+        returnButton!!.setOnClickListener {
+            var intent = Intent(this, KMainActivityl::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            startActivity(intent)
+            finish()
+        }
     }
 
     private val onButtonClick = View.OnClickListener { v ->

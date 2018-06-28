@@ -27,7 +27,7 @@ import java.util.*
  */
 
 class APIRadio : Activity() {
-    var bool: Boolean? = null
+    var bool = false
     var player: MediaPlayer? = null
     var init: Int = 0
 
@@ -55,7 +55,10 @@ class APIRadio : Activity() {
         player = MediaPlayer()
         player!!.setWakeMode(applicationContext, PowerManager.PARTIAL_WAKE_LOCK)
         player!!.setAudioStreamType(AudioManager.STREAM_MUSIC)
-        PlayerTask().execute(streaming)
+        player!!.setDataSource(streaming)
+        player!!.prepareAsync()
+        Log.i("BEFORE COMPLETION : ", if (APIRadio.getShared().player == null) "NULL" else "NOT NULL")
+        //player!!.prepare()
         completionHandler(player!!)
     }
 
@@ -69,7 +72,6 @@ class APIRadio : Activity() {
             try {
                 Log.i("DEBUG", strings[0])
                 player!!.setDataSource(strings[0])
-                player!!.prepare()
                 APIRadio.getShared().player = player
             } catch (e: IOException) {
                 e.printStackTrace()
@@ -78,3 +80,4 @@ class APIRadio : Activity() {
         }
     }
 }
+

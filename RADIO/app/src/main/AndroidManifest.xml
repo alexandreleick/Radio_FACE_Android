@@ -23,11 +23,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".KMainActivityl">
+        <activity android:name=".KMainActivityl" android:noHistory="true">
         </activity>
-        <activity android:name=".PlayAudioExample" />
-        <activity android:name=".Parametre" />
-        <activity android:name=".APropos" />
+        <activity android:name=".PlayAudioExample" android:noHistory="true"/>
+        <activity android:name=".Parametre" android:noHistory="true"/>
+        <activity android:name=".APropos" android:noHistory="true"/>
     </application>
 
 </manifest>

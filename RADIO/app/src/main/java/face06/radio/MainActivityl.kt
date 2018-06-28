@@ -78,26 +78,29 @@ class KMainActivityl : Activity() {
         else if (isStarted == true)
             playButton!!.setImageResource(R.drawable.pause)
         playButton!!.setOnClickListener(onButtonClick)
-        inLive!!.setOnClickListener({
+        inLive!!.setOnClickListener {
             Log.i("DEBUG", "" + " En live ")
             intent = Intent(this, PlayAudioExample::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
             startActivity(intent)
-        })
+            finish()
+        }
 
-        settings!!.setOnClickListener({
+        settings!!.setOnClickListener {
 
 
 
             Log.i("DEBUG", "" + " Paramètres ")
             intent = Intent(this, Parametre::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
             startActivity(intent)
-        })
+        }
 
-        lastSong!!.setOnClickListener({
+        lastSong!!.setOnClickListener {
             val paramDialog = LastSongListViewController(this, song!!)
             paramDialog.show()
             Log.i("DEBUG", "" + "Dernière musique ")
-        })
+        }
     }
 
     private val onButtonClick = View.OnClickListener { v ->

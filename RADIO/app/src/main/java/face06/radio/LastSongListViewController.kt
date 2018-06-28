@@ -23,7 +23,6 @@ import java.util.*
  * StaffBooker Company.
  */
 class LastSongListViewController(context: Context, sInfo: ArrayList<KSongInformations>) : Dialog(context, R.style.AppTheme) {
-    //internal var sLogo = arrayOf(R.drawable.ic_help_outline_black_18dp, R.drawable.legals, R.drawable.io)
 
     var sInfo: ArrayList<KSongInformations>
     private var title: TextView? = null
@@ -65,9 +64,10 @@ class LastSongListViewController(context: Context, sInfo: ArrayList<KSongInforma
         else if (isStarted == true)
             playButton!!.setImageResource(R.drawable.pause)
         playButton!!.setOnClickListener(onButtonClick)
-        returnButton!!.setOnClickListener({
+        returnButton!!.setOnClickListener {
             context.startActivity(Intent(context, KMainActivityl::class.java))
-        })
+
+        }
 
     }
     private val onButtonClick = View.OnClickListener { v ->

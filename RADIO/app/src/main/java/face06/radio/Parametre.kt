@@ -38,36 +38,38 @@ class Parametre : Activity() {
         setFont(name!!, "Archive.otf", "RUN RADIO")
         setFont(layout_name!!, "Geomanist-Book.otf", "Paramètre")
 
-        contact!!.setOnClickListener({
-            val mails = arrayOf("alexandre.leick@epitech.eu")
+        contact!!.setOnClickListener {
+            val mails = arrayOf("radio-run@face06.com")
             val i = Intent(Intent.ACTION_SEND)
             i.type = "plain/text"
             i.putExtra(Intent.EXTRA_SUBJECT, "Contact Run Radio Android")
             i.putExtra(Intent.EXTRA_EMAIL, mails)
+            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(Intent.createChooser(i, "Choix de l'application"))
-        })
-        propos!!.setOnClickListener({
+            finish()
+        }
+        propos!!.setOnClickListener {
             startActivity(Intent(this, APropos::class.java))
-        })
-        return_bar!!.setOnClickListener({
+        }
+        return_bar!!.setOnClickListener {
             startActivity(Intent(this, KMainActivityl::class.java))
-        })
+        }
 
-        facebook!!.setOnClickListener({
+        facebook!!.setOnClickListener {
             val intent = Intent()
             intent.action = Intent.ACTION_VIEW
             intent.addCategory(Intent.CATEGORY_BROWSABLE)
             intent.data = Uri.parse("https://www.facebook.com/RunRadioNice/")
             startActivity(intent)
-        })
+        }
 
-        insta!!.setOnClickListener({
+        insta!!.setOnClickListener {
             val intent = Intent()
             intent.action = Intent.ACTION_VIEW
             intent.addCategory(Intent.CATEGORY_BROWSABLE)
             intent.data = Uri.parse("https://www.instagram.com/runradio/")
             startActivity(intent)
-        })
+        }
     }
 
     fun setFont(textView: TextView, fontName: String?, setText: String) {

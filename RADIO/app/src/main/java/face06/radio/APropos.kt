@@ -1,5 +1,6 @@
 package face06.radio
 
+import android.app.Activity
 import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
@@ -18,26 +19,24 @@ import com.google.android.gms.maps.MapView
  * StaffBooker Company.
  */
 
-class APropos : AppCompatActivity() {
+class APropos : Activity() {
 
     var name: TextView?= null
     var faq_text: TextView?= null
     var return_bar: ImageView?= null
-    var mapView: MapView? = null
-    var map: GoogleMap? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.a_propos_layout)
-        name = findViewById(R.id.name) as TextView
-        faq_text = findViewById(R.id.faq_text) as TextView
-        return_bar = findViewById(R.id.return_bar) as ImageView
-        mapView = findViewById(R.id.map) as MapView
+        name = findViewById<TextView>(R.id.name)
+        faq_text = findViewById<TextView>(R.id.faq_text)
+        return_bar = findViewById<ImageView>(R.id.return_bar)
         setFont(name!!, "Geomanist-Book.otf", "A propos")
-        setFont(faq_text!!, "Geomanist-Book.otf", "La Radio Universitaire Niçoise (RUN) est\n une webradio qui a pour vocation de \nconnecter d'une nouvelle manière les \ncampus azuréens de l'Université Nice \nSophia Antipolis.\n\n\n9 Rue d’Alsace Lorraine, 06000 Nice")
-        return_bar!!.setOnClickListener({
+        setFont(faq_text!!, "Geomanist-Book.otf", setText = "La Radio Universitaire Niçoise (RUN) est\n une webradio qui a pour vocation de \nconnecter d'une nouvelle manière les \ncampus azuréens de l'Université Nice \nSophia Antipolis.\n\n\n9 Rue d’Alsace Lorraine, 06000 Nice")
+        return_bar!!.setOnClickListener {
             startActivity(Intent(this, Parametre::class.java))
-        })
+            finish()
+        }
     }
 
     fun setFont(textView: TextView, fontName: String?, setText: String) {
